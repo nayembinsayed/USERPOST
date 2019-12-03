@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User POST form</title>
+    </head>
+    
+    <body>
+        <h1>User POST details</h1>
+         <label>POST Title</label>
+        <input id = "title" type="text" />
+        <label>Reading Time</label>
+        <input id = "time" type ="text"/>
+         <label>POST Text</label>
+        <input  id = "des" type ="text"/>
+        <button id = "submit">Submit</button></button>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+    var user ={ title: "", time: "", des:""};
+    $('#submit').click(function(){
+        user.name = $("#title").val();
+        user.email = $("#time").val();
+        user.des = $("#des").val();
+        
+        $.ajax({
+            method:"POST",
+            url:"/submit_user",
+            data: user
+        }).done(function(response){
+            console.log(response);
+        }).fail(function(response){
+            console.log(response);
+        })
+    });
+</script>
+    </body>
+</html>
